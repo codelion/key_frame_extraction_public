@@ -54,6 +54,12 @@ def main(argv):
         )
     final_images = clustering_with_hdbscan.ImageSelector()
     imgs_final = final_images.select_best_frames(imgs,os.path.join(args.input_videos.rsplit( ".", 1 )[ 0 ],args.output_folder_video_image))
+    
+    # frame = cv2.imread(imgs_final[0])
+    height, width, layers = imgs_final[0].shape
+    fourcc = cv2.VideoWriter_fourcc(*'mp4v') # Be sure to use lower case
+    video = cv2.VideoWriter(args.input_videos + "-processed.mp4", fourcc, 20.0, (width,height))
+
     for counter, i in enumerate(imgs_final):
         vd.save_frame_to_disk(
             i,
@@ -61,6 +67,9 @@ def main(argv):
             file_name="test_" + str(counter),
             file_ext=".jpeg",
         )
+        video.write(i)
+    cv2.destroyAllWindows()
+    video.release()
     logging.info("--- {a} seconds to extract key frames from {b}---".format(a= (time.time() - start_time),b = args.input_videos))
 
 if __name__ == "__main__":

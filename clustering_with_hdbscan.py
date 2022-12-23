@@ -367,7 +367,7 @@ class ImageSelector(object):
 
         # saving clusters of single image cluster
         for images in files_clusters_index_array_of_only_one_image:
-            print(files_clusters_index_array_of_only_one_image)
+            # print(files_clusters_index_array_of_only_one_image)
             path = output_folder+'/'+str(i)
             try:
                 if not os.path.isdir(output_folder):
