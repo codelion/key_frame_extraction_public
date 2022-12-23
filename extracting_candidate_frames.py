@@ -20,10 +20,10 @@ class Frame:
 class Configs:
     # Setting local maxima criteria
     USE_LOCAL_MAXIMA = True
-    # Lenght of sliding window taking difference
-    len_window = 10
+    # Length of sliding window taking difference
+    len_window = 20
     # Chunk size of Images to be processed at a time in memory
-    max_frames_in_chunk = 2500
+    max_frames_in_chunk = 200
     # Type of smoothening window from 'flat', 'hanning', 'hamming', 'bartlett', 'blackman' flat window will produce a moving average smoothing.
     window_type = "hanning"
     # Setting for optimum Brightness values
@@ -116,7 +116,14 @@ class FrameExtractor(object):
         ret, frame = cap.read()
         i = 1
         chunk_no = 0
+        total_frames = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
+        current_frame_id = int(cap.get(cv2.CAP_PROP_POS_FRAMES))
+        print (total_frames)
+        
         while ret:
+            print (current_frame_id)
+            if current_frame_id >= total_frames:
+                break
             curr_frame = None
             prev_frame = None
 
@@ -136,6 +143,7 @@ class FrameExtractor(object):
             chunk_no = chunk_no + 1
             # print(frames)
             yield frames, frame_diffs
+            current_frame_id = int(cap.get(cv2.CAP_PROP_POS_FRAMES))
         cap.release()
 
     def __get_frames_in_local_maxima__(self, frames, frame_diffs):

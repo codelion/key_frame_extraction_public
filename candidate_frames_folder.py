@@ -68,7 +68,6 @@ def main(argv):
             file_ext=".jpeg",
         )
         video.write(i)
-    cv2.destroyAllWindows()
     video.release()
     logging.info("--- {a} seconds to extract key frames from {b}---".format(a= (time.time() - start_time),b = args.input_videos))
 

@@ -50,9 +50,9 @@ class ImageSelector(object):
         """
         hsv = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
         _, _, v = cv2.split(hsv)
-        sum = np.sum(v, dtype=np.float32)
+        summation = np.sum(v, dtype=np.float32)
         num_of_pixels = v.shape[0] * v.shape[1]
-        brightness_score = (sum * 100.0) / (num_of_pixels * 255.0)
+        brightness_score = (summation * 100.0) / (num_of_pixels * 255.0)
         return brightness_score
 
     def __get_entropy_score__(self, image):
