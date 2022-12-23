@@ -199,6 +199,7 @@ class ImageSelector(object):
         # Hdbascan = hdbscan.HDBSCAN(min_cluster_size=2,metric='manhattan').fit(all_hists)
         Hdbascan = hdbscan.HDBSCAN(min_cluster_size=2,metric='manhattan').fit(all_dst)
         labels = np.add(Hdbascan.labels_,1)
+        # print(labels)
         nb_clusters = len(np.unique(Hdbascan.labels_))
         # x=self.__plots_for_clustering(Hdbascan,all_dst)
         # del x
@@ -210,11 +211,22 @@ class ImageSelector(object):
             if i==0:
                 index_array = np.where(labels == i)
                 files_clusters_index_array_of_only_one_image.append(index_array)
+                # print(files_clusters_index_array_of_only_one_image)
             else:
                 index_array = np.where(labels == i)
+                # files_clusters_index_array[i-1]=(index_array)
                 files_clusters_index_array.append(index_array)
+                # print(index_array)
+                # print(type(index_array[0]))
+                # print(files_clusters_index_array)
+                # print(type(files_clusters_index_array))
+                # print(np.array([np.array (xi) for xi in files_clusters_index_array]))
 
-        files_clusters_index_array = np.array(files_clusters_index_array)
+        # print(files_clusters_index_array_of_only_one_image)
+        # print(files_clusters_index_array)
+        dt=np.dtype(np.ndarray,None)
+        files_clusters_index_array = np.array(files_clusters_index_array,dtype=dt)
+        # np.array(files_clusters_index_array)
         return files_clusters_index_array,files_clusters_index_array_of_only_one_image
 
     def __plots_for_clustering(self,Hdbascan,all_dst):

@@ -11,7 +11,7 @@ import clustering_with_hdbscan
 import logging
 
 
-logging.basicConfig(filename='./logs/key_frames.log',format='%(asctime)s  %(levelname)s:%(message)s',level=logging.DEBUG)
+logging.basicConfig(filename='key_frames.log',format='%(asctime)s  %(levelname)s:%(message)s',level=logging.DEBUG)
 logging.info('---------------------------------------------------------------------------------------------------------')
 
 """# Running the code 
