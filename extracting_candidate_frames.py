@@ -45,6 +45,7 @@ class FrameExtractor(object):
         self.len_window = Configs.len_window
         # Chunk size of Images to be processed at a time in memory
         self.max_frames_in_chunk = Configs.max_frames_in_chunk
+        self.input_frames = 0
 
         
 
@@ -118,8 +119,9 @@ class FrameExtractor(object):
         chunk_no = 0
         total_frames = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
         current_frame_id = int(cap.get(cv2.CAP_PROP_POS_FRAMES))
-        print (total_frames)
-        
+        print (total_frames) 
+        self.input_frames=total_frames
+
         while ret:
             print (current_frame_id)
             if current_frame_id >= total_frames:
