@@ -21,7 +21,7 @@ class Configs:
     # Setting local maxima criteria
     USE_LOCAL_MAXIMA = True
     # Length of sliding window taking difference
-    len_window = 20
+    len_window = 8
     # Chunk size of Images to be processed at a time in memory
     max_frames_in_chunk = 200
     # Type of smoothening window from 'flat', 'hanning', 'hamming', 'bartlett', 'blackman' flat window will produce a moving average smoothing.
