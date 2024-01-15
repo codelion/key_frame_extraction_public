@@ -94,7 +94,7 @@ def process_folder(model, token, text_prompt, input_folder, output_folder):
 
 if __name__ == "__main__":
     if len(sys.argv) != 6:
-        print("Usage: python script.py <model_name> <hf_token> <text_prompt> <input_folder> <output_folder>")
+        print("Usage: python edit_frames.py <model_name> <hf_token> <text_prompt> <input_folder> <output_folder>")
         sys.exit(1)
 
     model_name = sys.argv[1]

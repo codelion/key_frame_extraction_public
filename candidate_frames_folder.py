@@ -61,7 +61,7 @@ def main(argv):
     imgs_final = final_images.select_best_frames(imgs,os.path.join(args.input_videos.rsplit( ".", 1 )[ 0 ],args.output_folder_video_image))
     
     output.update({"key_frames" : len(imgs_final)})
-    output.update({"safety_score" : len(imgs_final)/len(imgs)*100})
+    output.update({"percentage" : len(imgs_final)/len(imgs)*100})
     
     # frame = cv2.imread(imgs_final[0])
     height, width, layers = imgs_final[0].shape
